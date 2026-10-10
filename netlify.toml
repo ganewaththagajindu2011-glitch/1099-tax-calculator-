@@ -1,0 +1,3 @@
+[build]
+  command = "python3 scripts/build-release.py --output dist"
+  publish = "dist"
