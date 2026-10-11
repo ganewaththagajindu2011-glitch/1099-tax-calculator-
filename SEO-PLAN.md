@@ -55,3 +55,9 @@ All three pages passed local internal-link/anchor checks and automated WCAG A/AA
 ## Production URL update
 
 Canonical/schema/social URLs and the sitemap now use https://1099-tax-calculator-main.vercel.app/. Build scripts reuse the configured origin unless an explicit origin or hosting environment override is supplied. Search Console ownership verification, sitemap submission, live checks, and qualified tax review remain outstanding.
+
+## Owner-provided launch evidence and new information pages
+
+The owner supplied screenshots showing Search Console HTML-file ownership verification, sitemap Success with three discovered pages, a successful indexing request, and a mobile PageSpeed report scoring 100 in all four categories. Desktop passing was reported by the owner. The index status shown was Discovered – currently not indexed; indexing is not confirmed. These observations supersede earlier pending setup notes; they do not establish professional tax review or ranking.
+
+About, Contact and Privacy pages now use the owner-supplied DGA family name and contact email. Their release adds three URLs to the sitemap, bringing it to six. This new release still needs deployment; six discovered/indexed pages are not yet confirmed. Local release checks, responsive layouts, footer links, accessibility, domain rewriting, and ZIP inclusion passed.

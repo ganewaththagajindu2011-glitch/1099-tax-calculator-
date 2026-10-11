@@ -19,7 +19,7 @@ async function get(path) {
 }
 function attr(tag,name){return tag.match(new RegExp('\\b'+name+'\\s*=\\s*["\']([^"\']*)["\']','i'))?.[1];}
 function meta(html,name){return (html.match(/<meta\b[^>]*>/gi)||[]).find(t=>attr(t,'name')===name||attr(t,'property')===name);}
-const pages=['/','/guides/quarterly-taxes/','/guides/1099-tax-deductions/'];
+const pages=['/','/guides/quarterly-taxes/','/guides/1099-tax-deductions/','/about/','/contact/','/privacy/'];
 for(const path of pages){
  const r=await get(path);if(!r)continue;
  check(path+' responds with HTML',r.status===200 && r.type.includes('text/html'),`HTTP ${r.status}`);
@@ -38,7 +38,7 @@ for(const path of pages){
  check(path+' JSON-LD parses',valid);
 }
 const robots=await get('/robots.txt');if(robots)check('Robots allows crawling and advertises sitemap',robots.status===200&&!/^Disallow:\s*\/\s*$/im.test(robots.text)&&robots.text.includes(expectedOrigin+'/sitemap.xml'));
-const sitemap=await get('/sitemap.xml');if(sitemap)check('Sitemap lists all three production pages',sitemap.status===200&&pages.every(p=>sitemap.text.includes('<loc>'+expectedOrigin+p+'</loc>')));
+const sitemap=await get('/sitemap.xml');if(sitemap)check('Sitemap lists all production pages',sitemap.status===200&&pages.every(p=>sitemap.text.includes('<loc>'+expectedOrigin+p+'</loc>')));
 for(const [path,type] of [['/og-image.png','image/png'],['/favicon.svg','image/svg+xml']]){const r=await get(path);if(r)check(path+' serves correct asset',r.status===200&&r.type.includes(type),`HTTP ${r.status}; ${r.type}`);}
 const verification=await get('/google3d1996e991c23a96.html');if(verification)check('Google ownership file served',verification.status===200 && verification.text.trim()==='google-site-verification: google3d1996e991c23a96.html',`HTTP ${verification.status}`);
 const missing=await get('/cleartax-audit-nonexistent-page/');if(missing)check('Unknown URL returns HTTP 404',missing.status===404,`HTTP ${missing.status}`);

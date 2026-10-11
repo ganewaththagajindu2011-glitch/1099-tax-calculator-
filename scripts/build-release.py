@@ -35,7 +35,7 @@ def remove_urls(value):
         return [remove_urls(v) for v in value]
     return value
 
-for src in [ROOT / 'index.html', *sorted((ROOT / 'guides').rglob('*.html'))]:
+for src in [ROOT / 'index.html', *sorted((ROOT / 'guides').rglob('*.html')), *[ROOT / page / 'index.html' for page in ('about', 'contact', 'privacy')]]:
     text = src.read_text()
     text = re.sub(r'\s*<!-- DEPLOYMENT:.*?-->', '', text, flags=re.S)
     if origin:

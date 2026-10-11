@@ -17,3 +17,7 @@ See [SEO and launch status](SEO-PLAN.md). The calculator is a simplified estimat
 ## Check the public deployment
 
 With Node.js 20+, run `node scripts/audit-live.mjs` to produce `live-audit.json`. See [owner-assisted launch steps](review/SEARCH-LAUNCH.md) for Search Console, PageSpeed and research prerequisites, and [the professional tax review brief](review/TAX-REVIEW.md) for the review scope. These tools and briefs do not establish that external checks or professional review are complete.
+
+## About, contact and privacy
+
+The site includes `/about/`, `/contact/`, and `/privacy/`, linked from every page footer. DGA family is the operator and the published contact address is ganewaththagajindu2011@gmail.com. Contact uses a mailto link, not a server-side form. The release ZIP and sitemap include all six public content pages and retain the Google verification file. Redeploy the updated ZIP to publish these changes.

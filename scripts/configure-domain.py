@@ -19,7 +19,7 @@ root = Path(__file__).resolve().parents[1]
 source = (root / 'index.html').read_text()
 current = re.search(r'<link rel="canonical" href="(https://[^/]+/)', source).group(1)
 replacement = f'https://{url.hostname}/'
-files = [root / 'index.html', *sorted((root / 'guides').rglob('*.html')), root / 'robots.txt', root / 'sitemap.xml']
+files = [root / 'index.html', *sorted((root / 'guides').rglob('*.html')), *[root / page / 'index.html' for page in ('about', 'contact', 'privacy')], root / 'robots.txt', root / 'sitemap.xml']
 for path in files:
     original = path.read_text()
     revised = original.replace(current, replacement)
