@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://1099-tax-calculator-main.vercel.app/sitemap.xml

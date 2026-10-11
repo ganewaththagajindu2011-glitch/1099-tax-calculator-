@@ -1,31 +1,40 @@
-# Deploy ClearTax to Vercel
+# Update the existing Vercel deployment
 
-The site has not been deployed. No Vercel account authorization is present in this workspace.
+Production hostname shown in the owner's Vercel dashboard:
+https://1099-tax-calculator-main.vercel.app/
 
-## Upload the prepared static release using Vercel CLI
+The dashboard showed Ready. Independent live requests from this workspace are blocked by the environment proxy (403), so live behavior and the version currently served have not been verified here.
 
-1. Download `1099-tax-calculator-vercel.zip` and extract it on your computer.
-2. Open a terminal in the extracted folder containing `index.html` and `vercel.json`.
-3. With Node.js installed, run `npx vercel login` and complete Vercel's sign-in flow yourself. Never send login credentials or tokens in chat.
-4. Run `npx vercel --prod`. Choose your account and a project name. The package includes static-site configuration; no application build is required for this extracted release.
-5. Share the resulting stable public project URL. A paid custom domain is not required; a Vercel hostname works.
+## Deploy this update from Windows
 
-The initial ZIP has no placeholder canonical or social URLs. It intentionally omits sitemap.xml and absolute social-image metadata until your public hostname is known. The calculator and all guides work without those tags.
+1. Download `downloads/1099-tax-calculator-vercel.zip` from this repository.
+2. Extract its contents into the folder you previously deployed, replacing the website files. Keep the existing hidden `.vercel` folder: it links that directory to your current Vercel project.
+3. Open PowerShell in that folder and run `npx vercel --prod`.
+4. If asked to link a project, choose the existing `1099-tax-calculator-main` project. Do not create another project.
 
-## Finalize the known hostname
+This ZIP is a ready-to-serve static release and does not require an application build. It contains the configured canonical/social URLs, sitemap.xml, robots.txt, guides, image, favicon, and 404 page.
 
-Build a final release from the source repository:
+## Optional automatic deployments
 
-    python3 scripts/build-release.py --origin https://YOUR-PRODUCTION-HOST --output /tmp/cleartax-final
+Use Connect Git in the existing Vercel project and connect this GitHub repository's main branch. Git-based source builds use `vercel.json` to produce a filtered dist folder. The build now uses the production origin saved in index.html by default. SITE_URL can override it when a custom domain is added. A GitHub push does not update a CLI-only deployment until Git is connected or you redeploy manually.
 
-Deploy `/tmp/cleartax-final` to the SAME Vercel project with `npx vercel --prod`. Select/link the existing project to retain the hostname. This release adds canonical URLs, absolute social-image URLs, and a three-page sitemap using the supplied production origin.
+## Verify after deployment
 
-## Optional Git-based deployment
+Open these URLs in a browser:
 
-If you later push this repository to GitHub, import it into Vercel. The root `vercel.json` builds a filtered `dist` folder so repository documentation and scripts are not served. Set a non-secret production `SITE_URL` environment variable to your stable HTTPS origin, then redeploy. Local production-build validation does not establish that the hosted build has passed.
+- https://1099-tax-calculator-main.vercel.app/
+- https://1099-tax-calculator-main.vercel.app/guides/quarterly-taxes/
+- https://1099-tax-calculator-main.vercel.app/guides/1099-tax-deductions/
+- https://1099-tax-calculator-main.vercel.app/sitemap.xml
+- https://1099-tax-calculator-main.vercel.app/robots.txt
+- https://1099-tax-calculator-main.vercel.app/og-image.png
 
-## Live verification after publication
+Check that an unknown path returns 404, calculator inputs update the totals, and mobile layout works. View page source to confirm the canonical origin matches the production hostname.
 
-Check the homepage, both guide routes, a nonexistent route (must return 404), favicon, social image, robots.txt, and sitemap.xml. Check HTTPS redirects, canonical URLs, mobile interactions, tax calculations, and live PageSpeed Insights. Then verify a Google Search Console property and submit the sitemap. Search Console requires owner verification; no submission has been performed.
+## Search Console
 
-Tax verification remains separate: official IRS/SSA requests were blocked by the current environment proxy, and no qualified tax professional has reviewed or signed off on the site. Do not describe the calculator as professionally reviewed or comprehensive tax advice.
+Add the HTTPS homepage as a URL-prefix property in Google Search Console. Verify ownership using a method offered for your account. If choosing an HTML tag, provide the public verification meta tag so it can be added to the site and redeployed. Never share account passwords or tokens. Then submit sitemap.xml. No Search Console verification or submission has been performed here.
+
+## Remaining verification
+
+Run PageSpeed Insights against the live domain. Local Lighthouse scores are not production field measurements or a ranking guarantee. IRS/SSA requests were blocked by the environment proxy, and no tax professional has reviewed or signed off on the calculator.

@@ -2,7 +2,7 @@
 
 ## Current status
 
-The site is not live and has no production domain. Local checks cannot establish indexing, HTTPS, Search Console verification, rankings, backlinks, or real-user Core Web Vitals. No ranking position is promised.
+The owner’s Vercel dashboard shows a Ready production deployment at https://1099-tax-calculator-main.vercel.app/. This update configures that hostname in the source and release ZIP; redeployment is still required. The environment proxy blocks independent live verification. Local checks cannot establish indexing, HTTPS, Search Console verification, rankings, backlinks, or real-user Core Web Vitals. No ranking position is promised.
 
 Implemented: one H1 per page, metadata, semantic content, accessible navigation, calculator, matching FAQ/WebApplication schema, two linked guides, robots.txt, sitemap.xml, and a social preview image. The calculator remains a dependency-free HTML/CSS/JS page. Deploy the entire folder so guides and the image are included.
 
@@ -51,3 +51,7 @@ A Google Business Profile is not automatically appropriate for an online-only ca
 A mobile-emulated Lighthouse run against the local server returned performance: 100/100, accessibility: 100/100, best-practices: 100/100, seo: 100/100. largest-contentful-paint: 1.1 s, total-blocking-time: 10 ms, cumulative-layout-shift: 0. These are single-run lab observations, not field Core Web Vitals, production performance, or ranking predictions. INP needs interaction/field measurement.
 
 All three pages passed local internal-link/anchor checks and automated WCAG A/AA checks. Calculator regression tests, responsive widths 320/375/768/1440, sitemap XML parsing, and domain configuration repeatability passed. External IRS/SSA link reachability was not verified: the environment previously returned proxy access denials for those destinations. Verify those source links and current guidance before publication.
+
+## Production URL update
+
+Canonical/schema/social URLs and the sitemap now use https://1099-tax-calculator-main.vercel.app/. Build scripts reuse the configured origin unless an explicit origin or hosting environment override is supplied. Search Console ownership verification, sitemap submission, live checks, and qualified tax review remain outstanding.

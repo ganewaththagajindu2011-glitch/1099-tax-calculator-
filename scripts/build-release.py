@@ -10,8 +10,11 @@ import zipfile
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
+source = (ROOT / 'index.html').read_text()
+old_origin = re.search(r'<link rel="canonical" href="(https://[^/]+/)', source).group(1)
+saved_origin = old_origin if urlsplit(old_origin).hostname != 'yourdomain.com' else None
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--origin', default=os.environ.get('SITE_URL') or os.environ.get('URL'), help='Production HTTPS origin; optional for an initial manual upload')
+parser.add_argument('--origin', default=os.environ.get('SITE_URL') or os.environ.get('URL') or saved_origin, help='Production HTTPS origin; optional for an initial manual upload')
 parser.add_argument('--output', default='dist', help='Release directory (must not already exist)')
 args = parser.parse_args()
 origin = None
@@ -24,8 +27,6 @@ out = Path(args.output).resolve()
 if out.exists():
     parser.error('Output already exists. Choose a new output directory to preserve existing files.')
 out.mkdir(parents=True)
-source = (ROOT / 'index.html').read_text()
-old_origin = re.search(r'<link rel="canonical" href="(https://[^/]+/)', source).group(1)
 
 def remove_urls(value):
     if isinstance(value, dict):

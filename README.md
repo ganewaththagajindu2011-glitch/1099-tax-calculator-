@@ -10,6 +10,6 @@ For the complete source, choose **Code → Download ZIP** on GitHub.
 
 ## Deploy from this repository
 
-Import this repository into Vercel. `vercel.json` builds a filtered `dist` folder. After your production hostname is known, set `SITE_URL` to its HTTPS origin and redeploy to configure canonical URLs, the sitemap, and social tags. The initial release works without a hostname; do not directly publish the source HTML with placeholder URLs.
+Import this repository into Vercel. `vercel.json` builds a filtered `dist` folder. The production hostname is configured as `https://1099-tax-calculator-main.vercel.app/`. Canonical URLs, the sitemap, and social tags use that origin. Set `SITE_URL` to override it when moving to a custom domain. Updating GitHub does not publish to a CLI-only Vercel project; redeploy or connect Git in Vercel.
 
 See [SEO and launch status](SEO-PLAN.md). The calculator is a simplified estimate, excludes several tax situations, and has not received professional tax review.
