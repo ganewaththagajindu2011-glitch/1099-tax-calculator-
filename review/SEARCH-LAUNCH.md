@@ -12,7 +12,7 @@ If canonical/sitemap checks fail, redeploy the latest prepared ZIP to the existi
 
 ## 2. Search Console verification and submission
 
-Open https://search.google.com/search-console/ and add a URL-prefix property for https://1099-tax-calculator-main.vercel.app/ . Select HTML tag verification. Copy ONLY the public google-site-verification meta tag to the assistant. After it is added and redeployed, select Verify in Search Console. Do not send passwords, login codes, cookies, or access tokens.
+Open https://search.google.com/search-console/ and use the URL-prefix property for https://1099-tax-calculator-main.vercel.app/ . The owner supplied HTML verification filename `google3d1996e991c23a96.html`; this file is now included in the source and release build. After redeploying, open https://1099-tax-calculator-main.vercel.app/google3d1996e991c23a96.html and confirm the standard Google verification text appears. Return to the HTML-file method in Search Console and click Verify. Do not remove the file afterward. No account verification action has been performed here.
 
 After verification, open Sitemaps and submit sitemap.xml. Use URL Inspection on the homepage and both guides. Request indexing where appropriate; submitting or requesting does not guarantee indexing. These account actions have not been performed.
 

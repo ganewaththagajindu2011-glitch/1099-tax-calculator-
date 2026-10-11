@@ -52,6 +52,13 @@ for src in [ROOT / 'index.html', *sorted((ROOT / 'guides').rglob('*.html'))]:
     target.write_text(text)
 for name in ['favicon.svg', 'og-image.png', '404.html', '_headers']:
     shutil.copyfile(ROOT / name, out / name)
+# Include public Google ownership files in both hosted builds and manual-upload ZIPs.
+for verification in ROOT.glob('google*.html'):
+    if re.fullmatch(r'google[0-9a-f]+\.html', verification.name):
+        expected = 'google-site-verification: ' + verification.name
+        if verification.read_text().strip() != expected:
+            parser.error('Unexpected verification file contents: ' + verification.name)
+        shutil.copyfile(verification, out / verification.name)
 config = json.loads((ROOT / 'vercel.json').read_text())
 config.update(buildCommand=None, outputDirectory='.', installCommand=None)
 (out / 'vercel.json').write_text(json.dumps(config, indent=2) + '\n')

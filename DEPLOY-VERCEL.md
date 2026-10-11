@@ -33,7 +33,11 @@ Check that an unknown path returns 404, calculator inputs update the totals, and
 
 ## Search Console
 
-Add the HTTPS homepage as a URL-prefix property in Google Search Console. Verify ownership using a method offered for your account. If choosing an HTML tag, provide the public verification meta tag so it can be added to the site and redeployed. Never share account passwords or tokens. Then submit sitemap.xml. No Search Console verification or submission has been performed here.
+The owner supplied the HTML-file verification name `google3d1996e991c23a96.html`. The matching standard Google verification response is included at the site root and in the build/ZIP. After redeploying, open:
+
+https://1099-tax-calculator-main.vercel.app/google3d1996e991c23a96.html
+
+It must return `google-site-verification: google3d1996e991c23a96.html`. Then return to the HTML-file verification method for the URL-prefix property in Search Console and select Verify. Leave the file deployed after verification. Once verified, submit `sitemap.xml` under Sitemaps. Adding this file does not itself establish verified ownership; no Verify or Submit action has been performed here.
 
 ## Remaining verification
 

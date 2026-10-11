@@ -40,6 +40,7 @@ for(const path of pages){
 const robots=await get('/robots.txt');if(robots)check('Robots allows crawling and advertises sitemap',robots.status===200&&!/^Disallow:\s*\/\s*$/im.test(robots.text)&&robots.text.includes(expectedOrigin+'/sitemap.xml'));
 const sitemap=await get('/sitemap.xml');if(sitemap)check('Sitemap lists all three production pages',sitemap.status===200&&pages.every(p=>sitemap.text.includes('<loc>'+expectedOrigin+p+'</loc>')));
 for(const [path,type] of [['/og-image.png','image/png'],['/favicon.svg','image/svg+xml']]){const r=await get(path);if(r)check(path+' serves correct asset',r.status===200&&r.type.includes(type),`HTTP ${r.status}; ${r.type}`);}
+const verification=await get('/google3d1996e991c23a96.html');if(verification)check('Google ownership file served',verification.status===200 && verification.text.trim()==='google-site-verification: google3d1996e991c23a96.html',`HTTP ${verification.status}`);
 const missing=await get('/cleartax-audit-nonexistent-page/');if(missing)check('Unknown URL returns HTTP 404',missing.status===404,`HTTP ${missing.status}`);
 const report={checkedAt:new Date().toISOString(),base:base.origin,passed:checks.filter(c=>c.passed).length,failed:checks.filter(c=>!c.passed).length,limitations:['Not a Core Web Vitals or ranking test.','Does not verify Search Console ownership, Google indexing, tax accuracy, or JavaScript interaction.'],checks};
 await writeFile(option('--output','live-audit.json'),JSON.stringify(report,null,2)+'\n');
