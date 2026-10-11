@@ -52,6 +52,7 @@ for src in [ROOT / 'index.html', *sorted((ROOT / 'guides').rglob('*.html')), *[R
     target.write_text(text)
 for name in ['favicon.svg', 'og-image.png', '404.html', '_headers']:
     shutil.copyfile(ROOT / name, out / name)
+shutil.copytree(ROOT / 'assets', out / 'assets')
 # Include public Google ownership files in both hosted builds and manual-upload ZIPs.
 for verification in ROOT.glob('google*.html'):
     if re.fullmatch(r'google[0-9a-f]+\.html', verification.name):

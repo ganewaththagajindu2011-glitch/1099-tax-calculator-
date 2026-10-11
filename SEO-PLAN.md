@@ -34,7 +34,7 @@ Once live, the site owner should create a Search Console property, verify owners
 
 Review monthly: impressions, clicks, CTR, query/page positions, indexing exclusions, referring domains, broken links, and live performance. Compare meaningful periods and account for tax-season changes. Improve low-CTR titles only where the page matches query intent. Do not repeatedly change dates to suggest nonexistent content updates.
 
-GA4 is optional and is not installed. It requires an actual measurement ID and an appropriate privacy/consent implementation. Never send income, expenses, filing status, tax results, or form field values to analytics. Use only necessary aggregate page/CTA events if analytics is later added, and revise the current privacy copy if tracking changes it.
+GA4 is now integrated with measurement ID G-V4LC6K9BFB and explicit visitor opt-in. Deployment, disabling Enhanced measurement in the GA4 web stream, and confirming Realtime receipt remain owner actions. The code does not include calculator financial values in events. See review/ANALYTICS.md and the updated Privacy page.
 
 ## Content and authority
 

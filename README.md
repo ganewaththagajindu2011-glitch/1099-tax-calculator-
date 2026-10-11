@@ -21,3 +21,7 @@ With Node.js 20+, run `node scripts/audit-live.mjs` to produce `live-audit.json`
 ## About, contact and privacy
 
 The site includes `/about/`, `/contact/`, and `/privacy/`, linked from every page footer. DGA family is the operator and the published contact address is ganewaththagajindu2011@gmail.com. Contact uses a mailto link, not a server-side form. The release ZIP and sitemap include all six public content pages and retain the Google verification file. Redeploy the updated ZIP to publish these changes.
+
+## Optional analytics
+
+GA4 measurement ID `G-V4LC6K9BFB` is integrated with opt-in analytics controls. Read [GA4 setup and verification](review/ANALYTICS.md): disable Enhanced measurement in the web-stream settings, deploy, then confirm page views in Realtime. Local consent tests do not establish live GA receipt.
