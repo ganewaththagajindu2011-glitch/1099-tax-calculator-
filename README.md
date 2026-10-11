@@ -13,3 +13,7 @@ For the complete source, choose **Code → Download ZIP** on GitHub.
 Import this repository into Vercel. `vercel.json` builds a filtered `dist` folder. The production hostname is configured as `https://1099-tax-calculator-main.vercel.app/`. Canonical URLs, the sitemap, and social tags use that origin. Set `SITE_URL` to override it when moving to a custom domain. Updating GitHub does not publish to a CLI-only Vercel project; redeploy or connect Git in Vercel.
 
 See [SEO and launch status](SEO-PLAN.md). The calculator is a simplified estimate, excludes several tax situations, and has not received professional tax review.
+
+## Check the public deployment
+
+With Node.js 20+, run `node scripts/audit-live.mjs` to produce `live-audit.json`. See [owner-assisted launch steps](review/SEARCH-LAUNCH.md) for Search Console, PageSpeed and research prerequisites, and [the professional tax review brief](review/TAX-REVIEW.md) for the review scope. These tools and briefs do not establish that external checks or professional review are complete.
