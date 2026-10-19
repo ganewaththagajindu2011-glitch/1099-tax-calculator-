@@ -19,7 +19,7 @@ async function get(path) {
 }
 function attr(tag,name){return tag.match(new RegExp('\\b'+name+'\\s*=\\s*["\']([^"\']*)["\']','i'))?.[1];}
 function meta(html,name){return (html.match(/<meta\b[^>]*>/gi)||[]).find(t=>attr(t,'name')===name||attr(t,'property')===name);}
-const pages=['/','/guides/quarterly-taxes/','/guides/1099-tax-deductions/','/about/','/contact/','/privacy/'];
+const pages=['/','/guides/quarterly-taxes/','/guides/1099-tax-deductions/','/guides/1099-estimated-tax-calculator/','/guides/self-employed-tax-calculator/','/about/','/contact/','/privacy/'];
 for(const path of pages){
  const r=await get(path);if(!r)continue;
  check(path+' responds with HTML',r.status===200 && r.type.includes('text/html'),`HTTP ${r.status}`);
